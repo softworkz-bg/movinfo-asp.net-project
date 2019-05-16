@@ -1,0 +1,21 @@
+﻿@model SingleCategoryViewModel
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/customStyle.css" />
+
+<div class="custom-table01 col-md-4">
+    @await Html.PartialAsync("_StatusMessage", TempData["StatusMessage"])
+    <form method="post" enctype="multipart/form-data" asp-action="SaveSingleCategory" asp-controller="Category" class="custom-table01">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <input asp-for="Title" class="form-control" value="" placeholder="Title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add Category" class="btn btn-main btn-effect btn-add custom-btn" />
+        </div>
+    </form>
+</div>

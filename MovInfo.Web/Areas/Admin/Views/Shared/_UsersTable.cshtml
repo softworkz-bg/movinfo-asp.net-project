@@ -1,0 +1,45 @@
+﻿@model AllAppUsersViewModel
+
+
+<div class="table-users">
+    <table id="table" class="table-fill table table-striped border">
+        <thead>
+            <tr>
+                <th class="text-left" scope="col" width="5%">№</th>
+                <th class="text-left" scope="col" height="5%" width="5%">Username</th>
+                <th class="text-left" scope="col">Email</th>
+                <th class="text-left" scope="col">Roles</th>
+                <th class="text-left" scope="col" width="5%">Remove</th>
+            </tr>
+        </thead>
+
+        <tbody class="table-hover">
+            @{
+                int counter = 1;
+            }
+
+            @foreach (var user in Model.AllUsers)
+            {
+                <tr>
+                    <td>@counter</td>
+                    @{
+                        counter++;
+                    }
+                    <td class="text-left">@user.Username</td>
+                    <td class="text-left">@user.Email</td>
+                    <td class="text-left">
+                        @foreach (var item in user.UserRoles)
+                        {
+                            <span>@item</span>
+                        }                        
+                    </td>
+                    <td class="text-left">
+                        <form method="post">
+                            <button asp-controller="Users" class="btn btn-main btn-effect btn-add" asp-action="DeleteSingleUser" asp-route-id="@user.Id" method="post" onclick="return confirm('Are you sure?');">✘</button>
+                        </form>
+                    </td>                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,17 @@
+﻿@model AppErrorViewModel
+@{
+    ViewData["Title"] = "GeneralError";
+    Layout = "~/Views/Shared/_LayoutError.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/errorPageStyle.css" />
+
+<div class="container custom-error">
+    <div class="errorPageBackground">
+        <div class="innerErrorPlaceholder alert alert-dismissible error-message">
+            <h5>Error: @Model.ErrorMessage</h5>
+        </div>        
+    </div>
+</div>
+
+<script src="~/assets/js/redirectToHomeAfter8sec.js"></script>

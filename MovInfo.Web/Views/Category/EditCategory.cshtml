@@ -1,0 +1,33 @@
+﻿@model SingleCategoryViewModel
+@{
+    ViewData["Title"] = "EditCategory";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/customStyle.css" />
+
+<div class="custom-table01 col-md-4">
+    @await Html.PartialAsync("_StatusMessage", TempData["StatusMessage"])
+    <form method="post" enctype="multipart/form-data" asp-action="EditSingleCategory" asp-controller="Category" class="custom-table01">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group">
+            <label>Enter new Title Name</label>
+            <input asp-for="Title" class="form-control" value="@Model.Title" placeholder="Enter new Title Name" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input id="originalMoviesArr" asp-for="AllMoviesIdsString" type="hidden" class="form-control movies-form-submit" value="@Model.AllMoviesIdsString" />
+            <span asp-validation-for="AllMoviesIdsString" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" asp-for="Id" class="form-control" value="@Model.Id" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Edit Category" class="btn btn-main btn-effect btn-add custom-btn" />
+        </div>
+    </form>
+</div>

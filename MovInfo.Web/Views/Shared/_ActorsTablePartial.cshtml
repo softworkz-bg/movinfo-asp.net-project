@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SingleActorViewModel>
+
+
+<div class="table-users">
+    <table id="table" class="table-fill table table-striped border">
+        <thead>
+            <tr>
+                <th class="text-left" scope="col" width="1%">№</th>
+                <th class="text-left" scope="col" height="5%" width="5%">Poster</th>
+                <th class="text-left" scope="col">Name</th>
+                <th class="text-left" scope="col" width="230">Biography</th>
+            </tr>
+        </thead>
+
+        <tbody class="table-hover">
+            @{
+                int counter = 1;
+            }
+
+            @foreach (var actor in Model)
+            {
+                <tr>
+                    <td>@counter</td>
+                    @{
+                        counter++;
+                    }
+                    <td class="circle-img-container text-left"><a asp-controller="Actor" asp-action="GetActor" asp-route-actorId="@actor.Id"><img class="circle-img2" src="@actor.FullImagePath" alt="Image not found" onerror="this.src='/assets/images/posters/poster-2.jpg'"/></a></td>
+                    <td class="text-left"><a asp-controller="Actor" asp-action="GetActor" asp-route-actorId="@actor.Id">@actor.FirstName @actor.LastName</a></td>
+                    
+                    <td class="text-left">@actor.Bio.Substring(0, Math.Min(40, actor.Bio.Length))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

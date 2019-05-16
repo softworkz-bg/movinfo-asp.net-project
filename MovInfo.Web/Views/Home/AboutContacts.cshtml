@@ -1,0 +1,300 @@
+﻿
+@{
+    ViewData["Title"] = "About & Contacts";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<link rel="stylesheet" href="~/assets/css/customStyle.css">
+
+<!-- =============== START OF MAIN =============== -->
+<div class="container col-md-8">
+    <h2>Web App Made by  <a href="http://softworkz.org"><span class="btn btn-add btn-main btn-effect huge">Team SoftWorkz!</span></a></h2>
+</div>
+
+<div class="container col-sm-12">
+    <div>
+        <h5>
+            Project Details:
+        </h5>
+        <hr />
+        <p>
+            Project is hosted in Azure and features a Three-Layer architecture:
+            <ul>
+                <li>
+                    Presentation Layer: consists of ASP.NET Core 2.2 Web Project with fully responsive beautiful design.
+                </li>
+                <li>
+                    Business Layer: Services and business features processing class library.
+                </li>
+                <li>
+                    Data Layer: Holding the configuration for the data-base and additional mappings of table-relationships.
+                </li>
+            </ul>
+            App includes thorough unit testing for the services and business features.<br />
+            The Website allows the client to Register choosing between two distinct Roles: User and Manager.
+            One super-user is seeded upon initial start-up of the application along with basic
+            data-base information via JSON files and pre-made images.
+            The User can login and enjoy different authorised features based on his User Role.<br />
+            Project includes caching for some parts of its Movie Collections to lower the database trips.
+            Example: Top Eight movies Collection inside every single movie is a very-frequently seen collection.
+            Caching it would allow Dramatic performance boost for the daily usage of the website.<br />
+            Project was developed using end-to-end Feature branches (left un-deleted in the git-system for the purpose of showcasing the process)!
+        </p>
+        <hr />
+        <h6>Un-Logged users Can:</h6>
+        <p>
+            <ul>
+                <li>
+                    Browse all movies;
+                </li>
+                <li>
+                    Search Movies by Name and have paginated result;
+                </li>
+                <li>
+                    Open and view detailed info about movies and actors;
+                </li>
+                <li>
+                    Read user Reviews for the movie;
+                </li>
+                <li>
+                    Perform Advanced Movie search via jquery.DataTable interface;
+                </li>
+                <li>
+                    Perform Advanced search for Actors and preview Categories as well;
+                </li>
+                <li>
+                    Enjoy the various Carousels for Top Movies and more;
+                </li>
+            </ul>
+
+            <h6>Logged users with role "USER" Can on top of all previous:</h6>
+        <p>
+            <ul>
+                <li>
+                    Leave Reviews for movies;
+                </li>
+                <li>
+                    Edit their own Reviews;
+                </li>
+                <li>
+                    Delete their own Reviews;
+                </li>
+            </ul>
+        </p>
+        <h6>Logged users with role "MANAGER" Can on top of all previous:</h6>
+        <p>
+            <ul>
+                <li>
+                    Add Movies using ajax search for actors and categories in the process;
+                </li>
+                <li>
+                    Edit Movies using ajax search for actors and categories in the process;
+                </li>
+                <li>
+                    Delete Movies;
+                </li>
+                <li>
+                    Add Actors using ajax search for movies;
+                </li>
+                <li>
+                    Edit Actors using ajax search for movies;
+                </li>
+                <li>
+                    Delete Actors;
+                </li>
+                <li>
+                    Edit Reviews;
+                </li>
+                <li>
+                    Delete Reviews;
+                </li>
+            </ul>
+            <h6>Logged user with role "ADMIN" Can on top of all previous:</h6>
+        <p>
+            <ul>
+                <li>
+                    Delete user accounts inside the special Admin Area
+                    that includes table for all users;
+                </li>
+            </ul>
+        </p>
+    </div>
+    <hr />
+</div>
+
+
+<div class="container col-md-8">
+    <h3>Team SoftWorkz Members:</h3>
+</div>
+
+
+<main class="contact-page ptb100">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Start of Contact Details -->
+            <div class="col-md-4 col-sm-12">
+                <h3 class="title">Contact Info</h3>
+
+                <div class="details-wrapper">
+                    <p>Do not hestitate do get in touch!</p>
+
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-phone-square"></i>
+                            <strong>Phone:</strong>
+                            <span>+359 89 480 7339 </span>
+                        </li>
+                        <li>
+                            <i class="icon-paper-plane"></i>
+                            <strong>E-Mail:</strong>
+                            <span>dimitar.mihov.bg@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-linkedin"></i>
+                            <strong>LinkedIn:</strong>
+                            <a href="https://www.linkedin.com/in/dmihov/">linkedin.com/in/dmihov</a>
+                        </li>
+                        <li>
+                            <i class="fab fa-gitlab"></i>
+                            <strong>GitLab:</strong>
+                            <a href="https://gitlab.com/dimitarmihov">gitlab.com/dimitarmihov</a>
+                        </li>
+                        <li>
+                            <i class="fab fa-github"></i>
+                            <strong>GitHub:</strong>
+                            <a href="https://github.com/dimitarmihovbg">github.com/dimitarmihovbg</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <strong>Portfolio Website:</strong>
+                            <span><a href="http://DreamEmployee.bg">DreamEmployee.bg</a></span>
+                        </li>
+                        <li>
+                            <i class="fab fa-html5"></i>
+                            <strong>Telerik-Alpha Team Page:</strong>
+                            <span><a href="http://SoftWorkz.Org">Team SoftWorkz</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Start of Contact Details -->
+            <!-- Start of Contact Form -->
+            <div class="col-md-8 col-sm-12">
+
+                <div>
+                    <div class="picIntoText"><span class="textAroundPic"><img src="~/images/second rounding.png" /></span></div>
+                    <p>
+                        <span class="name-heading">Dimtiar Mihov</span>
+                        is professional passionate about software development!
+                        Quality programming code is his priority!
+                        Always striving towards technical proficiency and producing quality products.
+                        You can review his projects after clicking on the contact links on the left.
+                        Dimitar has spent 2 years learning from the old Telerik Academy and placing
+                        he foundation for his knowledge. <br /><br />
+                        Right now he is in the process of graduating Telerik Alpha
+                        academy and along with his colleague and team-mate Georgi Despolov
+                        is determined to embark on the journey of the IT industry.
+                        Dimtiar has graduated from the High-School of Mathematics and
+                        Biology in the city of Burgas and currently resides in Sofia. <br /><br />
+                        A real team-player commited to self-sacrifice in the name of the mutual success!<br /><br />
+                        Furthermore he believes anyone can learn a bunch of techniques or information...
+                        and that this is not the most impressive skill a programmer can posses and Develop!
+                        What truly sets unique individuals apart, he says is only one thing: MINDSET!
+                        Mindset, especially in the long-term is EVERYTHING!
+                        So we invite you to learn more about him and our team and test his skills,
+                        qualifications and mindset. See if we can not only work together,
+                        but PROSPER together in synergy! <br /><br />
+                        Finally his wish is to see a better world, filled with more people caring about the poor
+                        more exciting projects featuring charity and the global evolution of technology for the general mass-market!
+
+                    </p>
+                </div>
+                <!-- End of Contact Form -->
+            </div>
+            <!-- Start of Contact Form -->
+
+        </div>
+    </div>
+</main>
+
+<main class="contact-page ptb100">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Start of Contact Details -->
+            <div class="col-md-4 col-sm-12">
+                <h3 class="title">Contact Info</h3>
+
+                <div class="details-wrapper">
+                    <p>Do not hestitate do get in touch!</p>
+
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-phone-square"></i>
+                            <strong>Phone:</strong>
+                            <span>+359 88 271 6763 </span>
+                        </li>
+                        <li>
+                            <i class="icon-paper-plane"></i>
+                            <strong>E-Mail:</strong>
+                            <span>georgi.despolov@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-linkedin"></i>
+                            <strong>LinkedIn:</strong>
+                            <a href="https://www.linkedin.com/in/georgi-despolov-3b56b1139/">linkedin.com/in/georgi-despolov-3b56b1139</a>
+                        </li>
+                        <li>
+                            <i class="fab fa-gitlab"></i>
+                            <strong>GitLab:</strong>
+                            <a href="https://gitlab.com/despolov">gitlab.com/despolov</a>
+                        </li>         
+                        <li>
+                            <i class="fab fa-html5"></i>
+                            <strong>Telerik-Alpha Team Page:</strong>
+                            <span><a href="http://SoftWorkz.Org">Team SoftWorkz</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Start of Contact Details -->
+            <!-- Start of Contact Form -->
+            <div class="col-md-8 col-sm-12">
+
+                <div>
+                    <div class="picIntoText2"><span class="textAroundPic2"><img src="~/images/georgiavatar.png" /></span></div>
+                    <p>
+                        <span class="name-heading">Georgi Despolov</span>
+                        Georgi Despolov is a software developer at Telerik Academy, where he trains
+                        his skills in software engineering, writing high quality code using patterns,
+                        data structures and algorithms and the newest technologies, including unit testing.
+                        </br></br>
+                        He is very practical man but also extremely dedicated to his work.
+                        He does not fear hard-working but still prefers doing things the simple way -- the way it Just Works.
+                        </br></br>
+                        Georgi has accomplished two main projects during his time in the Academy which can be
+                        found in the links provided.</br>
+                        As a warm-hearted team-player, he has found ways to keep in touch with the
+                        development process while having fun during the development stages.
+                        </br></br>
+                        Georgi is originally from Burgas but is currently living in Sofia.
+                        Some of his hobbies include Sports, cooking, german muscle cars and thinking
+                        deeply about the meaning of the industry
+                        he wishes so eagerly to join! Do not hestitate to contact!
+                    </p>
+                </div>
+                <!-- End of Contact Form -->
+            </div>
+            <!-- Start of Contact Form -->
+
+        </div>
+    </div>
+</main>
+
+

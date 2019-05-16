@@ -1,0 +1,12 @@
+﻿@using MovInfo.Views.Manage
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+@if (hasExternalLogins)
+{
+    <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext) nav-item">
+        <a class="nav-link" asp-action="ExternalLogins">External logins</a>
+    </li>
+}

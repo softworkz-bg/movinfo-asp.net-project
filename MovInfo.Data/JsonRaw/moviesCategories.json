@@ -1,0 +1,106 @@
+[
+  {
+    "MovieID": 1,
+    "CategoryID": 1
+  },
+  {
+    "MovieID": 1,
+    "CategoryID": 18
+  },
+  {
+    "MovieID": 2,
+    "CategoryID": 5
+  },
+  {
+    "MovieID": 2,
+    "CategoryID": 15
+  },
+  {
+    "MovieID": 3,
+    "CategoryID": 2
+  },
+  {
+    "MovieID": 3,
+    "CategoryID": 5
+  },
+  {
+    "MovieID": 3,
+    "CategoryID": 11
+  },
+  {
+    "MovieID": 3,
+    "CategoryID": 21
+  },
+  {
+    "MovieID": 4,
+    "CategoryID": 4
+  },
+  {
+    "MovieID": 4,
+    "CategoryID": 5
+  },
+  {
+    "MovieID": 5,
+    "CategoryID": 3
+  },
+  {
+    "MovieID": 5,
+    "CategoryID": 4
+  },
+  {
+    "MovieID": 5,
+    "CategoryID": 5
+  },
+  {
+    "MovieID": 5,
+    "CategoryID": 11
+  },
+  {
+    "MovieID": 5,
+    "CategoryID": 21
+  },
+  {
+    "MovieID": 6,
+    "CategoryID": 19
+  },
+  {
+    "MovieID": 7,
+    "CategoryID": 18
+  },
+  {
+    "MovieID": 8,
+    "CategoryID": 17
+  },
+  {
+    "MovieID": 9,
+    "CategoryID": 16
+  },
+  {
+    "MovieID": 10,
+    "CategoryID": 15
+  },
+  {
+    "MovieID": 11,
+    "CategoryID": 14
+  },
+  {
+    "MovieID": 12,
+    "CategoryID": 13
+  },
+  {
+    "MovieID": 13,
+    "CategoryID": 12
+  },
+  {
+    "MovieID": 14,
+    "CategoryID": 12
+  },
+  {
+    "MovieID": 15,
+    "CategoryID": 25
+  },
+  {
+    "MovieID": 16,
+    "CategoryID": 9
+  }
+]

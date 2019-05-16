@@ -1,0 +1,50 @@
+﻿@model SingleActorViewModel
+@{
+    ViewData["Title"] = "EditActor";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+<link rel="stylesheet" href="~/assets/css/customStyle.css" />
+<link rel="stylesheet" href="~/assets/css/movieStyle.css" />
+<div class="container col-md-4">
+    @await Html.PartialAsync("_StatusMessage", TempData["StatusMessage"])
+    <form method="post" enctype="multipart/form-data" asp-action="UpdateSingleActor" asp-controller="Actor" class="custom-table01">
+        <div class="resizedMovieContainer">
+            <img class="resizedMovieAvatar" src="@Model.FullImagePath" />
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Upload new Image?</label> <br />
+            <label asp-for="MainImage" class="btn btn-lg btn-add btn-main">Upload Image</label><span class="file-selected-tick">✔</span>
+            <input asp-for="MainImage" accept="image/*" class="custom-upload-form-real form-control btn-main btn-add" value="" placeholder="MainImage" />
+            <span asp-validation-for="MainImage" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Enter new First Name</label>
+            <input asp-for="FirstName" class="form-control" value="@Model.FirstName" placeholder="Enter new First Name" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Enter new Last Name</label>
+            <input asp-for="LastName" class="form-control" value="@Model.LastName" placeholder="Enter new Last Name" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Enter new Bio</label>
+            <input asp-for="Bio" class="form-control" value="@Model.Bio" placeholder="Enter new Bio" />
+            <span asp-validation-for="Bio" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="MainImageName" type="hidden" class="form-control" value="@Model.MainImageName" />
+        </div>
+        <div class="form-group">
+            <input type="hidden" asp-for="Id" class="form-control" value="@Model.Id" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Edit Actor" class="btn btn-main btn-effect btn-add custom-btn" />
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/revealTickWhenFileSelected.js"></script>
+}

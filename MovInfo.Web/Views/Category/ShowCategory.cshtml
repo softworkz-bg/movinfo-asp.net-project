@@ -1,0 +1,33 @@
+﻿@model SingleCategoryViewModel
+@{
+    ViewData["Title"] = "Show Category";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/customStyle.css" />
+
+<div class="container col-md-8">
+    <h3 class="title">@Model.Title movies:</h3>
+    <ul class="movie-list">
+        @for (int i = 0; i < Model.AllMovies.Count; i++)
+        {
+            <li>
+                <a asp-controller="Movie" asp-action="GetMovie" asp-route-movieId="@Model.AllMovies[i].Id"> @Model.AllMovies[i].Name</a>
+            </li>
+        }
+    </ul>
+</div>
+
+ @if (Model.CanUserEdit)
+ {
+<div class="custom-table01 col-md-4">
+    <h6><a href="/Category/EditCategory?=@Model.Id">Edit</a></h6>
+</div>
+ }
+
+ @if (Model.CanUserDelete)
+ {
+<form method="post">
+    <button type="submit" class="btn btn-danger custom-table01 col-lg-12" asp-controller="Category" asp-action="DeleteCategory" asp-route-categoryId="@Model.Id" onclick="return confirm('Are you sure?');">Delete</button>
+</form>
+ }

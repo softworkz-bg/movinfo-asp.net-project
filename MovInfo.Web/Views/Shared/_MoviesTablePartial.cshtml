@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SingleMovieViewModel>
+
+
+<div class="table-users">
+    <table id="table" class="table-fill table table-striped border">
+        <thead>
+            <tr>
+                <th class="text-left" scope="col" width="1%">№</th>
+                <th class="text-left" scope="col" height="5%" width="5%">Poster</th>
+                <th class="text-left" scope="col">Title</th>
+                <th class="text-left" scope="col" width="15%">Rating</th>
+                <th class="text-left" scope="col">Date Created</th>
+                <th class="text-left" scope="col" width="230">Synopsis</th>
+            </tr>
+        </thead>
+
+        <tbody class="table-hover">
+            @{
+                int counter = 1;
+            }
+
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>@counter</td>
+                    @{
+                        counter++;
+                    }
+                    <td class="circle-img-container text-left"><a asp-controller="Movie" asp-action="GetMovie" asp-route-movieId="@movie.Id"><img class="circle-img2" src="@movie.FullImagePath" alt="Image not found" onerror="this.src='/assets/images/posters/poster-2.jpg'" /></a></td>
+                    <td class="text-left"><a asp-controller="Movie" asp-action="GetMovie" asp-route-movieId="@movie.Id">@movie.Name</a></td>
+                    <td class="text-left">
+
+                        @for (int m = 0; m < Math.Min(5, movie.Rating); m++)
+                        {
+                            <i class="fa fa-star"></i>
+                        }
+                    </td>
+                    <td class="text-left">@movie.DateCreated.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture)</td>
+                    <td class="text-left">@movie.Bio.Substring(0, Math.Min(50, movie.Bio.Length))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,102 @@
+[
+	{
+		"ID": 1,
+		"Title": "Action"
+	},
+  {
+    "ID": 2,
+    "Title": "Adventure"
+  },
+  {
+    "ID": 3,
+    "Title": "Comedy"
+  },
+  {
+    "ID": 4,
+    "Title": "Crime"
+  },
+  {
+    "ID": 5,
+    "Title": "Drama"
+  },
+  {
+    "ID": 6,
+    "Title": "Fantasy"
+  },
+  {
+    "ID": 7,
+    "Title": "Historical"
+  },
+  {
+    "ID": 8,
+    "Title": "Historical fiction"
+  },
+  {
+    "ID": 9,
+    "Title": "Horror"
+  },
+  {
+    "ID": 10,
+    "Title": "Magical realism"
+  },
+  {
+    "ID": 11,
+    "Title": "Mystery"
+  },
+  {
+    "ID": 12,
+    "Title": "Paranoid Fiction"
+  },
+  {
+    "ID": 13,
+    "Title": "Philosophical"
+  },
+  {
+    "ID": 14,
+    "Title": "Political"
+  },
+  {
+    "ID": 15,
+    "Title": "Romance"
+  },
+  {
+    "ID": 16,
+    "Title": "Saga"
+  },
+  {
+    "ID": 17,
+    "Title": "Satire"
+  },
+  {
+    "ID": 18,
+    "Title": "Sci-Fi"
+  },
+  {
+    "ID": 19,
+    "Title": "Social"
+  },
+  {
+    "ID": 20,
+    "Title": "Speculative"
+  },
+  {
+    "ID": 21,
+    "Title": "Thriller"
+  },
+  {
+    "ID": 22,
+    "Title": "Urban"
+  },
+  {
+    "ID": 23,
+    "Title": "Western"
+  },
+  {
+    "ID": 24,
+    "Title": "Animation"
+  },
+  {
+    "ID": 25,
+    "Title": "SvogeEasterEgg"
+  }
+]

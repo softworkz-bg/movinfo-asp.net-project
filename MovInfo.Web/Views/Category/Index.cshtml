@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SingleCategoryViewModel>
+@{
+
+    ViewData["Title"] = "Search of Categories";
+    Layout = "~/Views/Shared/_LayoutSearch.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/categoriesTableCustomStyling.css" />
+
+<!-- =============== START OF MAIN =============== -->
+            <div role="tabpanel" data-example-id="togglable-tabs">
+                <div id="myTabContent">
+                    <div role="tabpanel" id="home" aria-labelledby="home-tab">
+                        <div class="agile-news-table">
+                            <div class="w3ls-news-result">
+                                <h4>Categories in the catalog: <span>@Model.Count()</span></h4>
+                            </div>
+                            <div class="w3ls-news-result">
+                                <h4>Top <span>@Model.Take(10).Count()</span>categories:</h4>
+                            </div>
+
+                            <div class="main main-raised">
+                                <div class="section">
+                                    <div class="container">
+                                        <hr />
+                                        <div class="table-responsive">
+                                            @await Html.PartialAsync("_CategoriesTablePartial", Model)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- =============== END OF MAIN =============== -->
+
+@section Scripts
+    {
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                responsive: true,
+                stateSave: true
+            });
+        });
+    </script>
+}

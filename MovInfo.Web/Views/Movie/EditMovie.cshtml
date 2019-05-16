@@ -1,0 +1,155 @@
+﻿@model SingleMovieViewModel
+@{
+    ViewData["Title"] = "EditMovie";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/customStyle.css" />
+<link rel="stylesheet" href="~/assets/css/movieStyle.css" />
+
+<div class="custom-table01 col-md-4">
+    @await Html.PartialAsync("_StatusMessage", TempData["StatusMessage"])
+    <div class="custon-edit-button-style awesomeHolderDelete buttonAwesomeDelete">
+
+        <form method="post">
+            <button type="submit" asp-controller="Movie" asp-action="DeleteMovie" class="btn btn-main btn-effect btn-add btn-danger" asp-route-movieId="@Model.Id" onclick="return confirm('Are you sure?');">DELETE Movie?</button>
+        </form>
+    </div>
+    <form method="post" enctype="multipart/form-data" asp-action="UpdateSingleMovie" asp-controller="Movie" class="custom-table01">
+        <div class="resizedMovieContainer">
+            <img class="resizedMovieAvatar" src="@Model.FullImagePath" />
+        </div>
+
+        <div class="form-group">
+            <label>Upload new Image?</label> <br />
+            <label asp-for="MainImage" class="btn btn-lg btn-add btn-main">Upload Image</label><span class="file-selected-tick">✔</span>
+            <input asp-for="MainImage" accept="image/*" class="form-control btn-main btn-add custom-upload-form-real" value="" placeholder="MainImage" />
+            <span asp-validation-for="MainImage" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Enter new Movie Name?</label>
+            <input asp-for="Name" class="form-control" value="@Model.Name" placeholder="Enter new Movie Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Enter new Movie Date?</label>
+            <input asp-for="DateCreated" class="form-control inline-div-control"></input>
+            <span asp-validation-for="DateCreated" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Enter new Trailer?</label>
+            <input asp-for="Trailer" class="form-control" value="@Model.Trailer" placeholder="Enter new movie trailer" />
+            <span asp-validation-for="Trailer" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Enter new Bio?</label>
+            <input type="text" asp-for="Bio" class="form-control" value="@Model.Bio" placeholder="Enter new movie Bio" />
+            <span asp-validation-for="Bio" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input id="originalActorsArr" asp-for="AllActorsIdsString" type="hidden" class="form-control actors-form-submit" value="@Model.AllActorsIdsString" />
+            <span asp-validation-for="AllActorsIdsString" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input id="originalCategoriesArr" asp-for="AllCategoriesIdsString" type="hidden" class="form-control categories-form-submit" value="@Model.AllCategoriesIdsString" />
+            <span asp-validation-for="AllCategoriesIdsString" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="MainImageName" type="hidden" class="form-control" value="@Model.MainImageName" />
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" asp-for="Id" class="form-control" value="@Model.Id" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Edit Movie" class="btn btn-main btn-effect btn-add custom-btn" onmousedown="addAllActorsEdited(event);addAllCategoriesEdited(event);" />
+        </div>
+    </form>
+
+
+
+</div>
+
+    <div class="side-part col-md-4">
+        <div class="widget-movie-cast side-part">
+            <h5 class="title">Current Movie Actors:</h5>
+            <ul class="cast-wrapper">
+                @for (int i = 0; i < Math.Min(6, Model.AllActors.Count); i++)
+                {
+                    <li>
+                        <span class="rounder-actor-img">
+                            <img class="side-part actor-img" src="@Model.AllActors[i].FullImagePath" onerror="this.src='https://img.icons8.com/dusk/64/000000/user.png';">
+                            <h4 class="name side-part deleteActor-btn deleteButton-custom btn btn-main btn-effect text-middle-custom" onclick="removeActorFromMovieLoaded(event)"><span class="make-invisible">@Model.AllActors[i].Id</span> @Model.AllActors[i].FirstName @Model.AllActors[i].LastName ✘</h4>
+                        </span>
+                    </li>
+                }
+            </ul>
+            @if (Model.AllActors.Count > 6)
+            {
+                <a asp-area="" asp-controller="Actor" asp-action="??ShowMany???" class="btn btn-main btn-effect mt20">view all</a>
+            }
+        </div>
+
+        <div class="custom-table01">
+            <div class="form-horizontal">
+                <div id="ActorSearchInput">
+                    <div>
+                        <label>Add new Actors?</label>
+                        @Html.TextBox("firstName", "", new { @class = "form-control", placeholder = "Search Actors by First Name" })
+                        <span id="resultsActorsTable"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-header">
+                <div class="hide"><h6>Chosen Actors (Last Name):</h6></div>
+                <div class="hideIfEmpty" id="placedActorResults"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="side-part col-md-4">
+        <div class="widget-movie-cast">
+            <h5 class="title">Current Movie Categories:</h5>
+            <ul class="cast-wrapper">
+                @for (int i = 0; i < Model.AllCategories.Count; i++)
+                {
+                    <li>
+                        <h4 class="name deleteButton-custom deleteCategory-btn btn btn-main btn-effect side-part text-middle-custom" onclick="removeCategoryFromMovieLoaded(event)"><span class="make-invisible">@Model.AllCategories[i].Id</span> @Model.AllCategories[i].Title ✘</h4>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="side-part">
+            <div id="CategorySearchInput" class="table-header">
+                <label>Add new Categories?</label>
+                @Html.TextBox("categoryName", "", new { @class = "form-control", placeholder = "Search Categories" })
+                <span id="categoriesResultsTable"></span>
+                <div>
+                    <h6 class="hide">Chosen Categories:</h6>
+                </div>
+                <div class="hideIfEmpty" id="placedCategoryResults"></div>
+                <a href="#" target="_self" class="btn btn-main btn-effect"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.0.min.js"
+            integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4="
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="~/assets/js/removeArrayElement.js"></script>
+
+    <script type="text/javascript" src="~/assets/js/searchAndAddActorsEdited.js"></script>
+    <script type="text/javascript" src="~/assets/js/searchAndAddCategoriesEdited.js"></script>
+
+    <script type="text/javascript" src="~/assets/js/removeFromAvailableActors.js"></script>
+    <script type="text/javascript" src="~/assets/js/removeFromAvailableCategories.js"></script>
+
+    <script type="text/javascript" src="~/assets/js/revealTickWhenFileSelected.js"></script>

@@ -1,0 +1,20 @@
+﻿@model CategoryViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="actorResultsScroll">
+    @for (int i = 0; i < Model.AllCategoryIdsAndNames.Count; i++)
+    {
+        var item = @Model.AllCategoryIdsAndNames.ElementAt(i);
+
+        if (i % 2 == 0)
+        {
+            <p class="btn-category grayBackground" onclick="addCategory(event)">@item.Key @item.Value</p>
+        }
+        if (i % 2 != 0)
+        {
+            <p class="btn-category" onclick="addCategory(event)">@item.Key @item.Value</p>
+        }
+    }
+</div>

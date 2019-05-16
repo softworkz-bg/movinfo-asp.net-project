@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SingleMovieViewModel>
+@{
+    ViewData["Title"] = "List of all movies";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<h1>FoundMoviesByName</h1>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/list-css/table-style.css" />
+    <link rel="stylesheet" type="text/css" href="/list-css/basictable.css" />
+</head>
+
+<div class="faq">
+    <h4 class="latest-text w3_faq_latest_text w3_latest_text">Movies List</h4>
+    <div class="container">
+        <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                @for (char i = 'A'; i <= 'Z'; i++)
+                {
+                    <li role="presentation"><a asp-controller="Movie" asp-action="SearchMoviesByName" asp-route-id="@i" role="tab" id="b-tab" data-toggle="tab" aria-controls="b">@i</a></li>
+                }
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                    <div class="agile-news-table">
+                        <div class="w3ls-news-result">
+                            <div class="w3ls-news-result">
+                                <h4>Movies starting with first letter <span style="color:#ff9800">@ViewContext.RouteData.Values["id"].ToString().ToUpper()</span>: <span>@Model.Count()</span></h4>
+                            </div>
+
+                            <div class="main main-raised">
+                                <div class="section">
+                                    <div class="container">
+                                        <hr />
+                                        <div class="table-responsive">
+                                            @await Html.PartialAsync("_MoviesTablePartial", Model)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+    {
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                responsive: true,
+                stateSave: true
+            });
+        });
+    </script>
+}

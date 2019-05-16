@@ -1,0 +1,140 @@
+/*a:not(.review-text):not(.name) {
+    color: white;
+}*/
+
+.name{
+    color: #333;
+}
+
+
+.custon-edit-button-style {
+    margin-top: 12%;
+    margin-bottom: -8%;
+}
+#awesomeHolder{
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  background: white;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-65%);
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+  border-radius: 2px;
+  width: 200px; 
+}
+
+/*#awesomeHolderDelete{
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  background: white;
+  margin: 0 auto;
+  position: relative;
+  transform: translateY(-65%);
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+  border-radius: 2px;
+  width: 150px; 
+}*/
+
+.buttonAwesome {	
+  background: #9352b3;
+  margin : 20px auto;
+  overflow: hidden;
+  text-align : center;
+  transition : .2s;
+  cursor : pointer;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+   height: 50px;
+}
+
+.buttonAwesomeDelete {	
+  margin : 20px auto;
+  overflow: hidden;
+  text-align : center;
+  transition : .2s;
+  cursor : pointer;
+   height: 50px;
+}
+
+.btnTwo {
+  position : relative;
+  width : 200px;
+  height : 100px;
+  margin-top: -100px;
+  padding-top: 2px;
+  background : #78283D;
+  left : -250px;
+  transition : .3s;
+}
+
+.btnTwoDelete {
+  position : relative;
+  width : 200px;
+  height : 100px;
+  margin-top: -100px;
+  padding-top: 2px;
+  background : #9352b3;
+  left : -250px;
+  transition : .3s;
+}
+
+.btnText {
+  color : white;
+  transition : .3s;
+  height: 50px;
+  vertical-align: center;
+  text-align: center;
+  margin-top : 10px;
+}
+
+.btnTextDelete {
+  color : white;
+  transition : .3s;
+  height: 50px;
+  vertical-align: center;
+  text-align: center;
+  margin-top : 10px;
+}
+
+.btnText2 {
+  margin-top : 40px;
+  margin-right : -130px;
+  color : #FFF;
+  vertical-align: center;
+}
+
+.btnText2Delete {
+  margin-top : 35px;
+  margin-right : -130px;
+  color : #FFF;
+  vertical-align: center;
+}
+
+.buttonAwesome:hover .btnTwo{ /*When hovering over .button change .btnTwo*/
+  left: -130px;
+}
+.buttonAwesome:hover .btnText{ /*When hovering over .button change .btnText*/
+  margin-left : 65px;
+}
+.buttonAwesome:active { /*Clicked and held*/
+  box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
+}
+.specialLink:hover{
+	color: white !important;
+}
+
+.delete-button-review-style {
+    margin-top: 10% !important;
+    background-color: #d9534f;
+}
+
+
+
+.actor-img {
+    height: 12%;
+    border-radius: 5px;
+}
+

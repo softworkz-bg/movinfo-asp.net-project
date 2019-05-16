@@ -1,0 +1,66 @@
+[
+  {
+    "MovieID": 1,
+    "ActorID": 1
+  },
+  {
+    "MovieID": 2,
+    "ActorID": 3
+  },
+  {
+    "MovieID": 3,
+    "ActorID": 2
+  },
+  {
+    "MovieID": 4,
+    "ActorID": 4
+  },
+  {
+    "MovieID": 5,
+    "ActorID": 5
+  },
+  {
+    "MovieID": 6,
+    "ActorID": 6
+  },
+  {
+    "MovieID": 7,
+    "ActorID": 7
+  },
+  {
+    "MovieID": 8,
+    "ActorID": 8
+  },
+  {
+    "MovieID": 9,
+    "ActorID": 9
+  },
+  {
+    "MovieID": 10,
+    "ActorID": 10
+  },
+  {
+    "MovieID": 11,
+    "ActorID": 11
+  },
+  {
+    "MovieID": 12,
+    "ActorID": 12
+  },
+  {
+    "MovieID": 13,
+    "ActorID": 13
+  },
+  {
+    "MovieID": 14,
+    "ActorID": 14
+  },
+  {
+    "MovieID": 15,
+    "ActorID": 15
+  },
+  {
+    "MovieID": 16,
+    "ActorID": 16
+  }
+]

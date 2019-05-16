@@ -1,0 +1,229 @@
+﻿@model SingleActorViewModel
+@{
+    ViewData["Title"] = "SingleActor";
+    Layout = "~/Views/Shared/_LayoutGetSingle.cshtml";
+}
+
+<!-- ===== CSS links ===== -->
+<link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="~/assets/css/responsive.css">
+<link rel="stylesheet" href="~/assets/css/movieStyle.css" />
+
+<!-- =============== START OF WRAPPER =============== -->
+<div class="wrapper">
+    <!-- =============== START OF MOVIE DETAIL INTRO =============== -->
+    <section class="celeb-detail-intro overlay-gradient ptb100" style="background: url(/images/moviecover1.jpg);"></section>
+    <!-- =============== END OF MOVIE DETAIL INTRO =============== -->
+    <!-- =============== START OF CELEBRITY DETAIL =============== -->
+    <section class="celeb-detail pb100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-12">
+                    <div class="celeb-img2">
+                        <img src="@Model.FullImagePath" alt="">
+                    </div>
+                </div>
+                <div class="col-md-8 col-12">
+                    <div class="celeb-details">
+                        <h3 class="title">@Model.FirstName @Model.LastName</h3>
+                        <!-- tab links -->
+                        <ul class="nav tab-links">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="bio-tab" data-toggle="tab" href="#bio" aria-controls="bio" aria-expanded="false">biography</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="film-tab" data-toggle="tab" href="#filmography" aria-controls="filmography" aria-expanded="false">filmography</a>
+                            </li>
+                            @if (Model.CanUserEdit)
+                            {
+                                <li class="nav-item">
+                                    <form method="post">
+                                        <button type="submit" class="nav-link btn btn-add btn-lg btn-main" asp-controller="Actor" asp-action="EditActor" asp-route-actorId="@Model.Id">Edit Actor</button>
+                                    </form>
+                                </li>
+                            }
+                            &nbsp;
+                            @if (Model.CanUserDelete)
+                            {
+                                <li class="nav-item">
+                                    <form method="post">
+                                        <button type="submit" class="nav-link btn btn-danger" asp-controller="Actor" asp-action="DeleteActor" asp-route-actorId="@Model.Id" onclick="return confirm('Are you sure?');">Delete</button>
+                                    </form>
+                                </li>
+                            }
+                        </ul>
+                        <!-- Tab Content -->
+                        <div class="tab-content mt70">
+                            <div class="tab-pane fade active show" id="bio" role="tabpanel" aria-labelledby="bio-tab" aria-expanded="false">
+                                <div class="bio-description">
+                                    <p>@Model.Bio</p>
+                                </div>
+                                <div class="bio-details">
+                                    <ul class="bio-wrapper">
+                                        <li><h6>Profession:</h6> Actor</li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="tab-pane fade" id="filmography" role="tabpanel" aria-labelledby="film-tab" aria-expanded="false">
+                                <ul class="film-list">
+                                    @for (int i = 0; i < Model.AllMovies.Count; i++)
+                                    {
+                                        <li>
+                                            <a asp-controller="Movie" asp-action="GetMovie" asp-route-movieId="@Model.AllMovies[i].Id"> @Model.AllMovies[i].Name</a>
+                                            <span class="year">@Model.AllMovies[i].DateCreated</span>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- =============== End OF CELEBRITY DETAIL =============== -->
+    <footer class="footer1 bg-dark">
+
+        <!-- ===== START OF FOOTER WIDGET AREA ===== -->
+        <div class="footer-widget-area ptb100">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Start of Widget 1 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="widget widget-about">
+
+                            <!-- INSERT YOUR LOGO HERE -->
+                            <img src="/assets/images/logo.svg" alt="logo" class="logo">
+                            <!-- INSERT YOUR WHITE LOGO HERE -->
+                            <img src="/assets/images/logo-white.svg" alt="white logo" class="logo-white">
+                            <p class="nomargin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, ducimus, atque. Praesentium suscipit provident explicabo dignissimos nostrum numquam deserunt earum accusantium et fugit.</p>
+                        </div>
+                    </div>
+                    <!-- End of Widget 1 -->
+                    <!-- Start of Widget 2 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="widget widget-links">
+                            <h4 class="widget-title">Useful links</h4>
+
+                            <ul class="general-listing">
+                                <li><a href="#">about movify</a></li>
+                                <li><a href="#">blog</a></li>
+                                <li><a href="#">forum</a></li>
+                                <li><a href="#">my account</a></li>
+                                <li><a href="#">watch list</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- End of Widget 2 -->
+                    <!-- Start of Widget 3 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="widget widget-blog">
+                            <h4 class="widget-title">latest news</h4>
+
+                            <ul class="blog-posts">
+                                <li><a href="#">blog post 1</a><small>januar 13, 2018</small></li>
+                                <li><a href="#">blog post 2</a><small>januar 13, 2018</small></li>
+                                <li><a href="#">blog post 3</a><small>januar 13, 2018</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End of Widget 3 -->
+                    <!-- Start of Widget 4 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="widget widget-social">
+                            <h4 class="widget-title">follow us</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, ducimus, atque.</p>
+
+                            <!-- Start of Social Buttons -->
+                            <ul class="social-btns">
+                                <!-- Social Media -->
+                                <li>
+                                    <a href="#" class="social-btn-roll facebook">
+                                        <div class="social-btn-roll-icons">
+                                            <i class="social-btn-roll-icon fa fa-facebook"></i>
+                                            <i class="social-btn-roll-icon fa fa-facebook"></i>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Social Media -->
+                                <li>
+                                    <a href="#" class="social-btn-roll twitter">
+                                        <div class="social-btn-roll-icons">
+                                            <i class="social-btn-roll-icon fa fa-twitter"></i>
+                                            <i class="social-btn-roll-icon fa fa-twitter"></i>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Social Media -->
+                                <li>
+                                    <a href="#" class="social-btn-roll google-plus">
+                                        <div class="social-btn-roll-icons">
+                                            <i class="social-btn-roll-icon fa fa-google-plus"></i>
+                                            <i class="social-btn-roll-icon fa fa-google-plus"></i>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Social Media -->
+                                <li>
+                                    <a href="#" class="social-btn-roll instagram">
+                                        <div class="social-btn-roll-icons">
+                                            <i class="social-btn-roll-icon fa fa-instagram"></i>
+                                            <i class="social-btn-roll-icon fa fa-instagram"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- End of Social Buttons -->
+
+                        </div>
+                    </div>
+                    <!-- End of Widget 4 -->
+
+                </div>
+            </div>
+        </div>
+        <!-- ===== END OF FOOTER WIDGET AREA ===== -->
+        <!-- ===== START OF FOOTER COPYRIGHT AREA ===== -->
+        <div class="footer-copyright-area ptb30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex">
+                            <div class="links">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><a href="#">Privacy & Cookies</a></li>
+                                    <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
+                                    <li class="list-inline-item"><a href="#">Legal Disclaimer</a></li>
+                                    <li class="list-inline-item"><a href="#">Community</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="copyright ml-auto">All Rights Reserved by <a href="#">Movify</a>.</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===== END OF FOOTER COPYRIGHT AREA ===== -->
+
+    </footer>
+</div>
+<!-- =============== END OF WRAPPER ===============
+     <!-- =============== START OF FOOTER =============== -->
+
+<!-- =============== END OF FOOTER =============== -->
+<!-- ===== All Javascript at the bottom of the page for faster page loading ===== -->
+<script src="~/assets/js/jquery-3.2.1.min.js"></script>
+<script src="~/assets/js/bootstrap.min.js"></script>
+<script src="~/assets/js/headroom.js"></script>
+<script src="~/assets/js/custom.js"></script>
+

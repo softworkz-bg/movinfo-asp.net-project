@@ -1,0 +1,31 @@
+﻿@model IEnumerable<SingleCategoryViewModel>
+
+
+<div class="table-users">
+    <table id="table" class="table-fill table table-striped border">
+        <thead>
+            <tr>
+                <th class="text-left" scope="col" width="1%">№</th>
+                <th class="text-left" scope="col">Title</th>
+            </tr>
+        </thead>
+
+        <tbody class="table-hover">
+            @{
+                int counter = 1;
+            }
+
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>@counter</td>
+                    @{
+                        counter++;
+                    }
+                    <td class="text-left"><a asp-controller="Category" asp-action="GetCategory" asp-route-categoryId="@category.Id">@category.Title</a></td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

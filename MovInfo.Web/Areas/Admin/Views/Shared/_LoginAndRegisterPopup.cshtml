@@ -1,0 +1,135 @@
+﻿<!-- =============== START OF LOGIN & REGISTER POPUP =============== -->
+<div id="login-register-popup" class="small-dialog zoom-anim-dialog mfp-hide">
+
+    <!-- ===== Start of Signin wrapper ===== -->
+    <div class="signin-wrapper">
+        <div class="small-dialog-headline">
+            <h4 class="text-center">Sign in</h4>
+        </div>
+        <div class="small-dialog-content">
+            <!-- Start of Login form -->
+            <form asp-controller="Account" asp-action="Login" id="cariera_login" method="post">
+                <p class="status"></p>
+                <div class="form-group">
+                    <label for="username">Email *</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email *" />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Your Password *" />
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox pad-bottom-10">
+                        <input id="RememberMe" type="checkbox" name="RememberMe" value='TRUE'>
+                        <label for="RememberMe">Keep me signed in</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Sign in" class="btn btn-main btn-effect nomargin" />
+                </div>
+            </form>
+            <!-- End of Login form -->
+
+            <div class="bottom-links">
+                <span>
+                    Not a member?
+                    <a class="signUpClick">Sign up</a>
+                </span>
+                <a class="forgetPasswordClick pull-right">Forgot Password</a>
+            </div>
+        </div>
+
+    </div>
+    <!-- ===== End of Signin wrapper ===== -->
+    <!-- ===== Start of Signup wrapper ===== -->
+    <div class="signup-wrapper">
+        <div class="small-dialog-headline">
+            <h4 class="text-center">Sign Up</h4>
+        </div>
+        <div class="small-dialog-content">
+            <!-- Start of Registration form -->
+            <form asp-controller="Account" asp-action="Register" id="cariera_registration" method="POST">
+                <p class="status"></p>
+
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input name="Email" id="Email2" class="form-control" type="text" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input name="Password" id="Password" class="form-control" type="password" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="ConfirmPassword">Confirm Password</label>
+                    <input name="ConfirmPassword" id="ConfirmPassword" class="form-control" type="password" required />
+                </div>
+                <label for="UserRole">Choose Role:</label>
+                <select name="UserRole" class="form-group">
+                    <option value="User">User</option>
+                    <option value="Manager">Manager</option>
+                </select>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-main btn-effect nomargin" value="Register" />
+                </div>
+            </form>
+            <!-- End of Registration form -->
+
+            <div class="bottom-links">
+                <span>
+                    Already have an account?
+                    <a class="signInClick">Sign in</a>
+                </span>
+
+                <a class="forgetPasswordClick pull-right">Forgot Password</a>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- ===== End of Signup wrapper ===== -->
+    <!-- ===== Start of Forget Password wrapper ===== -->
+    <div class="forgetpassword-wrapper">
+        <div class="small-dialog-headline">
+            <h4 class="text-center">Forgotten Password</h4>
+        </div>
+
+        <div class="small-dialog-content">
+            <!-- Start of Forger Password form -->
+            <form asp-controller="Account" asp-action="ForgotPassword" id="forget_pass_form" method="post">
+                <p class="status"></p>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label for="Email">Email Address *</label>
+                    <input type="email" name="Email" class="form-control" id="Email" required placeholder="Email Address *" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" value="Get New Password" required class="btn btn-main btn-effect nomargin" />
+                </div>
+            </form>
+            <!-- End of Forger Password form -->
+
+            <div class="bottom-links">
+                <a class="cancelClick">Cancel</a>
+            </div>
+
+        </div><!-- .small-dialog-content -->
+
+    </div>
+    <!-- ===== End of Forget Password wrapper ===== -->
+
+</div>
+<!-- =============== END OF LOGIN & REGISTER POPUP =============== -->
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.2/jquery.validate.unobtrusive.js"></script>

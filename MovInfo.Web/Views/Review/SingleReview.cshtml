@@ -1,0 +1,71 @@
+﻿@model SingleReviewViewModel
+@{
+    ViewData["Title"] = "Full Review Details";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/customStyle.css" />
+<link rel="stylesheet" href="~/assets/css/movieStyle.css" />
+
+@await Html.PartialAsync("_StatusMessage", TempData["StatusMessage"])
+
+<div class="col-md-6">
+    <a asp-controller="Movie" asp-action="GetMovie" asp-route-movieId="@Model.MovieId" class="btn btn-main btn-effect btn-add ">Back to Movie</a>
+</div>
+
+<div class="custom-table01 col-md-8">
+    <div id="hideOldReview">
+        <div>
+            <div>
+                <h4>
+                    <div>Review made by: @Model.ApplicationUserName </div>
+                </h4>
+            </div>
+
+            <div class="rating mt10">
+                <h6>
+                    Review Rating:
+                    @for (int m = 0; m < Math.Min(5, Model.Rating); m++)
+                    {
+                        <i class="fa fa-star"></i>
+                    }
+                </h6>
+            </div>
+
+            <div>
+                <h6>Review Synopsis:</h6>
+                <p>@Model.Text</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="custom-table01 col-xl-10">
+        <div class="table-header">
+            <div class="form-horizontal">
+                @if (@Model.CanUserEdit)
+                {
+                    <div id="partialReview">
+                        @await Html.PartialAsync("_EditReview", Model)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @if (@Model.CanUserDelete)
+        {
+            <form method="post">
+                <button type="submit" asp-controller="Review" asp-action="DeleteReview" asp-route-id="@Model.Id" class="btn btn-main btn-effect btn-sm delete-button-review-style" onclick="return confirm('Are you sure?');">Delete Review</button>
+            </form>
+        }
+    </div>
+</div>
+
+<!-- ===== Custom Search and Add Movie and Categories Page-Specific scripts ===== -->
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/reviewBox.js"></script>
+}
+
+

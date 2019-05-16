@@ -1,0 +1,33 @@
+
+    .errorBackgrdound {
+        background-image: url('/images/party4.jpg');
+        width: 120%;
+    }
+
+
+@media screen and (min-width: 800px) {
+    .errorBackgrdound {
+        background-image: url('/images/error8.jpg');
+        width: 120%;
+    }
+}
+
+.errorPageBackground{
+	height: 600px;
+	width: 1920px;
+}
+
+.custom-error{	
+	margin-top: 10%;	
+	color: white;	
+}
+
+.innerErrorPlaceholder{
+	background-color: rgba(76,61,61,0.5);	
+	display: inline-block;
+	color: white;	
+}
+
+.innerErrorPlaceholder > h5{
+	color: #EAEAE3 !important;	
+}

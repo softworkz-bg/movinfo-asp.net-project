@@ -1,0 +1,20 @@
+﻿@model ActorViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="actorResultsScroll">
+    @for (int i = 0; i < Model.AllActorIdsAndNames.Count; i++)
+    {
+        var item = @Model.AllActorIdsAndNames.ElementAt(i);
+
+        if (i % 2 == 0)
+        {
+            <p class="btn-actor grayBackground" onclick="addActor(event)">@item.Key @item.Value</p>
+        }
+        if (i % 2 != 0)
+        {
+            <p class="btn-actor" onclick="addActor(event)">@item.Key @item.Value</p>
+        }
+    }
+</div>

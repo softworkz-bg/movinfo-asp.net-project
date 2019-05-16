@@ -1,0 +1,35 @@
+﻿@model SingleActorViewModel
+@{
+    ViewData["Title"] = "Add Actor";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+<link rel="stylesheet" href="~/assets/css/customStyle.css" />
+<div class="container col-md-6">
+    @await Html.PartialAsync("_StatusMessage", TempData["StatusMessage"])
+    <form method="post" enctype="multipart/form-data" asp-action="SaveSingleActor" asp-controller="Actor" class="custom-table01">
+        <div class="form-group">
+            <input asp-for="FirstName" class="form-control" value="" placeholder="First Name" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="LastName" class="form-control" value="" placeholder="Last Name" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="Bio" class="form-control" value="" placeholder="Biography" />
+            <span asp-validation-for="Bio" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MainImage" class="btn btn-lg btn-add btn-main">Upload Image</label><span class="file-selected-tick">✔</span>
+            <input asp-for="MainImage" accept="image/*" class="form-control custom-upload-form-real btn-main btn-add" value="" placeholder="MainImage" />
+            <span asp-validation-for="MainImage" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add Actor" class="btn btn-main btn-effect btn-add custom-btn" />
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/revealTickWhenFileSelected.js"></script>
+}

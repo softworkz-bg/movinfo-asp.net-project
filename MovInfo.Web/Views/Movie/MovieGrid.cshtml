@@ -1,0 +1,127 @@
+﻿@model MovieListingViewModel
+@{
+    ViewData["Title"] = "Seach Movies by Name";
+    Layout = "~/Views/Shared/_LayoutSearch.cshtml";
+}
+
+<!-- =============== START OF MAIN =============== -->
+<main class="ptb100">
+    <div class="container">
+
+        <!-- Start of Filters -->
+        <div class="row mb50">
+
+            <div class="col-md-6">
+                <!-- Layout Switcher -->
+                <div class="layout-switcher">
+                    <a asp-controller="Movie" asp-action="ListAllMoviesWithName" asp-route-name="@Model.SearchName" asp-route-targetPage="@Model.TargetPage" class="list"><i class="fa fa-align-justify"></i></a>
+                    <a asp-controller="Movie" asp-action="GridAllMoviesWithName" asp-route-name="@Model.SearchName" asp-route-targetPage="@Model.TargetPage" class="grid active"><i class="fa fa-th"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <!-- Sort by -->
+                <div class="sort-by">
+                    <div class="sort-by-select">
+                        <a asp-controller="Movie" asp-action="Index" class="btn btn-main btn-effect btn-add ">Search movies by Name</a>
+                    </div>
+                </div>
+                <!-- Sort by / End -->
+            </div>
+
+        </div>
+        <!-- End of Filters -->
+        <!-- Start of Movie List -->
+        <div class="row">
+
+            @if (Model.SixMoviesWithName.Count == 0)
+            {
+                <div class="listing-container">
+                    <h5>No Movies with name @Model.SearchName</h5>
+                </div>
+            }
+            else
+            {
+                @foreach (var movie in Model.SixMoviesWithName)
+                {
+                    <!-- Movie List Item -->
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="movie-box-2 mb30">
+                            <div class="listing-container">
+
+                                <!-- Movie List Image -->
+                                <div class="listing-image">
+
+                                    <!-- Play Button -->
+                                    <div class="play-btn">
+                                        <a href="@movie.Trailer" class="play-video">
+                                            <i class="fa fa-play"></i>
+                                        </a>
+                                    </div>
+
+                                    <!-- Buttons -->
+                                    <div class="buttons">
+                                        <a href="#" data-original-title="Rate" data-toggle="tooltip" data-placement="bottom" class="like">
+                                            <i class="icon-heart"></i>
+                                        </a>
+
+                                        <a href="#" data-original-title="Share" data-toggle="tooltip" data-placement="bottom" class="share">
+                                            <i class="icon-share"></i>
+                                        </a>
+                                    </div>
+
+                                    <!-- Rating -->
+                                    <div class="stars">
+                                        <div class="rating">
+                                            @for (int m = 0; m < Math.Min(5, movie.Rating); m++)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                            }
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
+                                    </div>
+
+                                    <!-- Image -->
+                                    <img src="@movie.FullImagePath" alt="">
+                                </div>
+
+                                <!-- Movie List Content -->
+                                <div class="listing-content">
+                                    <div class="inner">
+                                        <h2 class="title">@movie.Name</h2>
+                                        <p>@movie.Bio.Substring(Math.Min(230, movie.Bio.Length))</p>
+                                        <a asp-controller="Movie" asp-action="GetMovie" asp-route-movieId="@movie.Id" class="btn btn-main btn-effect">details</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Movie List -->
+                }
+
+
+            }
+
+        </div>
+        <!-- Start of Pagination -->
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <nav class="pagination">
+                    <ul>
+                        @for (int i = 1; i < Model.TargetPage; i++)
+                        {
+                            <li><a asp-controller="Movie" asp-action="GridAllMoviesWithName" asp-route-name="@Model.SearchName" asp-route-targetPage="@i">@i</a></li>
+                        }
+                        <li><a class="current-page" asp-controller="Movie" asp-action="GridAllMoviesWithName" asp-route-name="@Model.SearchName" asp-route-targetPage="@Model.TargetPage">@Model.TargetPage</a></li>
+                        @for (int i = Model.TargetPage + 1; i <= Model.TotalPagesCount; i++)
+                        {
+                            <li><a a asp-controller="Movie" asp-action="GridAllMoviesWithName" asp-route-name="@Model.SearchName" asp-route-targetPage="@i">@i</a></li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- End of Pagination -->
+</main>
+<!-- =============== END OF MAIN =============== -->

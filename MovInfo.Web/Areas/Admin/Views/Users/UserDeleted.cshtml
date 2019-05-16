@@ -1,0 +1,15 @@
+﻿@model AppUserViewModel
+@{
+    ViewData["Title"] = "MovieDeleted";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/customStyle.css" />
+
+<div class="custom-table01 col-xl-12">
+    <h3>User with Id: #@Model.Id </h3>
+    <h3>With UserName: @Model.Username</h3>
+    <h3>Email: @Model.Email was succesfully deleted!</h3>
+</div>
+
+<script type="text/javascript" src="~/assets/js/redirectToHomeAfter8sec.js"></script>

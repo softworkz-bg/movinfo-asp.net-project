@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SingleActorViewModel>
+@{
+
+    ViewData["Title"] = "Search of Actors";
+    Layout = "~/Views/Shared/_LayoutSearch.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/actorsTableCustomStyling.css" />
+
+<!-- =============== START OF MAIN =============== -->
+<main class="ptb100">
+    <div class="container">
+        <!-- Start of Actor List -->
+            <div role="tabpanel" data-example-id="togglable-tabs">
+                <div id="myTabContent">
+                    <div role="tabpanel" id="home" aria-labelledby="home-tab">
+                        <div class="agile-news-table">
+                            <div class="w3ls-news-result">
+                                <h4>Actors in the catalog: <span>@Model.Count()</span></h4>
+                            </div>
+                            <div class="w3ls-news-result">
+                                <h4>Top<span>@Model.Take(10).Count()</span> actors:</h4>
+                            </div>
+
+                            <div class="main main-raised">
+                                <div class="section">
+                                    <div class="container">
+                                        <hr />
+                                        <div class="table-responsive">
+                                            @await Html.PartialAsync("_ActorsTablePartial", Model)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Movie List -->
+</main>
+<!-- =============== END OF MAIN =============== -->
+
+@section Scripts
+    {
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                responsive: true,
+                stateSave: true
+            });
+        });
+    </script>
+}

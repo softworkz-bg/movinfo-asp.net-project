@@ -1,0 +1,69 @@
+﻿@model TopMoviesViewModel
+<!-- =============== START OF LATEST MOVIES SECTION =============== -->
+<section class="latest-movies ptb100">
+    <div class="container">
+        <!-- Start of row -->
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="title">Top Movies</h2>
+            </div>
+
+            <div class="col-md-4 align-self-center text-right">
+                <a asp-controller="Movie" asp-action="Index" class="btn btn-icon btn-main btn-effect">
+                    view all
+                    <i class="ti-angle-double-right"></i>
+                </a>
+            </div>
+        </div>
+        <!-- End of row -->
+        <!-- Start of Latest Movies Slider -->
+        <div class="owl-carousel latest-movies-slider mt20">
+            @for (int i = 0; i < Math.Min(9, Model.TopMovies.Count); i++)
+            {
+                <!-- === Start of Sliding Item === -->
+                <div class="item">
+                    <!-- Start of Movie Box -->
+                    <div class="movie-box-1">
+
+                        <!-- Start of Poster -->
+                        <div class="poster">
+                            <img src="@Model.TopMovies[i].FullImagePath" alt="">
+                        </div>
+                        <!-- End of Poster -->
+                        <!-- Start of Buttons -->
+                        <div class="buttons">
+                            <a href="@Model.TopMovies[i].Trailer" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+                        <!-- End of Buttons -->
+                        <!-- Start of Movie Details -->
+                        <div class="movie-details">
+                            <h4 class="movie-title">
+                                <a asp-controller="Movie" asp-action="GetMovie" asp-route-movieId="@Model.TopMovies[i].Id">@Model.TopMovies[i].Name</a>
+                            </h4>
+                            <span class="released">@Model.TopMovies[i].DateCreated.ToString("MMMM yyyy", CultureInfo.InvariantCulture)</span>
+                        </div>
+                        <!-- End of Movie Details -->
+                        <!-- Start of Rating -->
+                        <div class="stars">
+                            <div class="rating">
+                                @for (int m = 0; m < Math.Min(5, Model.TopMovies[i].Rating); m++)
+                                {
+                                    <i class="fa fa-star"></i>
+                                }
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <span>@Model.TopMovies[i].Rating / 5</span>
+                        </div>
+                        <!-- End of Rating -->
+                    </div>
+                    <!-- End of Movie Box -->
+                </div>
+                <!-- === End of Sliding Item === -->
+            }
+        </div>
+        <!-- End of Latest Movies Slider -->
+    </div>
+</section>
+<!-- =============== END OF LATEST MOVIES SECTION =============== -->

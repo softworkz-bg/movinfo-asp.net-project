@@ -1,0 +1,300 @@
+﻿@model SingleMovieViewModel
+@{
+    ViewData["Title"] = "SingleMovie";
+    Layout = "~/Views/Shared/_LayoutGetSingle.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/movieStyle.css" />
+    <!-- =============== START OF WRAPPER =============== -->
+<div class="wrapper">
+    <!-- =============== START OF MOVIE DETAIL INTRO =============== -->
+    <section class="movie-detail-intro overlay-gradient ptb100" style="background: url(/images/moviecover2.jpg);"></section>
+    <!-- =============== END OF MOVIE DETAIL INTRO =============== -->
+    <!-- =============== START OF MOVIE DETAIL INTRO 2 =============== -->
+    <section class="movie-detail-intro2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="movie-poster">
+                        <img src="@Model.FullImagePath" alt="">
+
+                        <a href="@Model.Trailer" class="play-video">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                    <div class="movie-details">
+                        <h3 class="title">@Model.Name</h3>
+
+                        <ul class="movie-subtext">
+                            <li>
+                                @foreach (var item in Model.AllCategories)
+                                {
+                                    <span>@item.Title </span>
+                                }
+                            </li>
+                            <li>@Model.DateCreated.ToString("MMMM yyyy", CultureInfo.InvariantCulture)</li>
+                        </ul>
+
+                        <a href="@Model.Trailer" class="btn btn-main btn-effect">trailer</a>
+                        <div class="rating mt10">
+                            @for (int m = 0; m < Math.Min(5, Model.Rating); m++)
+                            {
+                                <i class="fa fa-star"></i>
+                            }
+                            <span>@Model.NumberOfRatings Ratings</span>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- =============== End OF MOVIE DETAIL INTRO 2 =============== -->
+    <!-- =============== START OF MOVIE DETAIL MAIN SECTION =============== -->
+    <section class="movie-detail-main ptb100">
+        <div class="container">
+
+            <div class="row">
+                <!-- Start of Movie Main -->
+                <div class="col-lg-8 col-sm-12">
+                    <div class="inner pr50">
+                        <!-- Storyline -->
+                        <div class="storyline">
+                            @await Html.PartialAsync("_StatusMessage", TempData["StatusMessage"])
+                            <h3 class="title">Storyline</h3>
+
+                            <p>@Model.Bio</p>
+                        </div>
+                        <!-- Media -->
+                        <div class="movie-media mt50 widget widget-movie-cast review-wrap">
+                            <h3 class="title"> Movie Reviews: </h3>
+                            <ul class="cast-wrapper reviews-wrapper">
+                                @for (int i = 0; i < Math.Min(4, Model.AllReviews.Count); i++)
+                                {
+                                    @if (Model.AllReviews.Count == 0)
+                                    {
+                                        <h5>No Reviews for movie Yet!</h5>
+                                    }
+                                    else
+                                    {
+                                        <li class="element">
+                                            <div class="rating">
+                                                <span>Author: @Model.AllReviews[i].ApplicationUserName</span> <br />
+                                                <span>Rating: </span>
+                                                @for (int m = 0; m < Math.Min(5, Model.AllReviews[i].Rating); m++)
+                                                {
+                                                    <span>&#9733;</span>
+                                                }
+                                            </div>
+                                            <a asp-controller="Review" asp-action="GetReview" asp-route-id="@Model.AllReviews[i].Id">
+                                                <div class="review-text">
+                                                    @Model.AllReviews[i].Text.Substring(0, Math.Min(100, Model.AllReviews[i].Text.Length)) ...
+                                                    <span class="click-for-more">(Click for More)</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    }
+                                }
+
+                                @if (Model.AllReviews.Count > 4)
+                                {
+                                    <a asp-area="" asp-controller="Review" asp-action="GetManyForMovie" class="btn btn-main btn-effect">See all Reviews</a>
+                                }
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Movie Main -->
+                <!-- Start of Sidebar -->
+                <div class="col-lg-4 col-sm-12">
+                    <div class="sidebar">
+
+                        @if (Model.CanUserEdit)
+                        {
+                            <div class="custon-edit-button-style">
+                                <div id="awesomeHolder">
+                                    <a href="/Movie/EditMovie?=@Model.Id" class="specialLink">
+                                        <div class="buttonAwesome">
+                                            <h4 class="btnText">Edit Movie?</h4>
+                                            <div class="btnTwo">
+                                                <h5 class="btnText2">GO!</h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+
+                        <div id="partialReview">
+                            @await Html.PartialAsync("_AddReview", Model.CurrentReview);
+                        </div>
+
+                        <aside class="widget widget-movie-cast">
+                            <h3 class="title">Cast</h3>
+
+                            <ul class="cast-wrapper">
+                                @for (int i = 0; i < Math.Min(8, Model.AllActors.Count); i++)
+                                {
+                                    <li>
+                                        <a asp-controller="Actor" asp-action="GetActor" asp-route-actorId="@Model.AllActors[i].Id">
+                                            <span class="circle-img">
+                                                <img src="@Model.AllActors[i].FullImagePath" onerror="this.src='https://img.icons8.com/dusk/64/000000/user.png';">
+                                            </span>
+                                            <h4 class="name">@Model.AllActors[i].FirstName @Model.AllActors[i].LastName</h4>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                            <a asp-area="" asp-controller="Actor" asp-action="Index" class="btn btn-main btn-effect mt20">view all</a>
+                        </aside>
+                        <!-- End of Details Widget -->
+
+                    </div>
+                </div>
+                <!-- End of Sidebar -->
+            </div>
+
+        </div>
+    </section>
+    <!-- =============== END OF MOVIE DETAIL MAIN SECTION =============== -->
+    <!-- =============== START OF RECOMMENDED MOVIES SECTION =============== -->
+    @await Html.PartialAsync("_TopEightMoviesHoriz", Model.TopEightMovies);
+    <!-- =============== END OF RECOMMENDED MOVIES SECTION =============== -->
+    <!-- =============== START OF FOOTER =============== -->
+    <footer class="footer1 bg-dark">
+
+        <!-- ===== START OF FOOTER WIDGET AREA ===== -->
+        <div class="footer-widget-area ptb100">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Start of Widget 1 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="widget widget-about">
+
+                            <!-- INSERT YOUR LOGO HERE -->
+                            <img src="/assets/images/logo.svg" alt="logo" class="logo">
+                            <!-- INSERT YOUR WHITE LOGO HERE -->
+                            <img src="/assets/images/logo-white.svg" alt="white logo" class="logo-white">
+                            <p class="nomargin">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, ducimus, atque. Praesentium suscipit provident explicabo dignissimos nostrum numquam deserunt earum accusantium et fugit.</p>
+                        </div>
+                    </div>
+                    <!-- End of Widget 1 -->
+                    <!-- Start of Widget 2 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="widget widget-links">
+                            <h4 class="widget-title">Useful links</h4>
+
+                            <ul class="general-listing">
+                                <li><a href="#">about movify</a></li>
+                                <li><a href="#">blog</a></li>
+                                <li><a href="#">forum</a></li>
+                                <li><a href="#">my account</a></li>
+                                <li><a href="#">watch list</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- End of Widget 2 -->
+                    <!-- Start of Widget 3 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="widget widget-blog">
+                            <h4 class="widget-title">latest news</h4>
+
+                            <ul class="blog-posts">
+                                <li><a href="#">blog post 1</a><small>januar 13, 2018</small></li>
+                                <li><a href="#">blog post 2</a><small>januar 13, 2018</small></li>
+                                <li><a href="#">blog post 3</a><small>januar 13, 2018</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End of Widget 3 -->
+                    <!-- Start of Widget 4 -->
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="widget widget-social">
+                            <h4 class="widget-title">follow us</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, ducimus, atque.</p>
+
+                            <!-- Start of Social Buttons -->
+                            <ul class="social-btns">
+                                <!-- Social Media -->
+                                <li>
+                                    <a href="#" class="social-btn-roll facebook">
+                                        <div class="social-btn-roll-icons">
+                                            <i class="social-btn-roll-icon fa fa-facebook"></i>
+                                            <i class="social-btn-roll-icon fa fa-facebook"></i>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Social Media -->
+                                <li>
+                                    <a href="#" class="social-btn-roll twitter">
+                                        <div class="social-btn-roll-icons">
+                                            <i class="social-btn-roll-icon fa fa-twitter"></i>
+                                            <i class="social-btn-roll-icon fa fa-twitter"></i>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Social Media -->
+                                <li>
+                                    <a href="#" class="social-btn-roll google-plus">
+                                        <div class="social-btn-roll-icons">
+                                            <i class="social-btn-roll-icon fa fa-google-plus"></i>
+                                            <i class="social-btn-roll-icon fa fa-google-plus"></i>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- Social Media -->
+                                <li>
+                                    <a href="#" class="social-btn-roll instagram">
+                                        <div class="social-btn-roll-icons">
+                                            <i class="social-btn-roll-icon fa fa-instagram"></i>
+                                            <i class="social-btn-roll-icon fa fa-instagram"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- End of Social Buttons -->
+
+                        </div>
+                    </div>
+                    <!-- End of Widget 4 -->
+
+                </div>
+            </div>
+        </div>
+        <!-- ===== END OF FOOTER WIDGET AREA ===== -->
+        <!-- ===== START OF FOOTER COPYRIGHT AREA ===== -->
+        <div class="footer-copyright-area ptb30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex">
+                            <div class="links">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><a href="#">Privacy & Cookies</a></li>
+                                    <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
+                                    <li class="list-inline-item"><a href="#">Legal Disclaimer</a></li>
+                                    <li class="list-inline-item"><a href="#">Community</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="copyright ml-auto">All Rights Reserved by <a href="#">Movify</a>.</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===== END OF FOOTER COPYRIGHT AREA ===== -->
+
+    </footer>
+    <!-- =============== END OF FOOTER =============== -->
+</div>

@@ -1,0 +1,147 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!-- Insert the class "sticky" in the header if you want a sticky header -->
+<header class="header header-fixed header-transparent text-white">
+
+    <div class="container-fluid">
+
+        <!-- ====== Start of Navbar ====== -->
+        <nav class="navbar navbar-expand-lg custom-header-style">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+                <!-- INSERT YOUR LOGO HERE -->
+                <img src="~/assets/images/logo.svg" alt="logo" width="150" class="logo">
+                <!-- INSERT YOUR WHITE LOGO HERE -->
+                <img src="~/assets/images/logo-white.svg" alt="white logo" width="150" class="logo-white">
+            </a>
+
+            <!-- Login Button on Responsive -->
+            <a href="#login-register-popup" class="login-mobile-btn popup-with-zoom-anim"><i class="icon-user"></i></a>
+
+
+            <button id="mobile-nav-toggler" class="hamburger hamburger--collapse" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+
+            <!-- ====== Start of #main-nav ====== -->
+            <div class="navbar-collapse" id="main-nav">
+
+                <!-- ====== Start of Main Menu ====== -->
+                <ul class="navbar-nav mx-auto" id="main-menu">
+                    <!-- Menu Item -->
+                    <li class="nav-item dropdown">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link white-link" aria-haspopup="true" aria-expanded="false">Home</a>
+                    </li>
+
+                    <!-- Menu Item -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle white-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Movies & TV Shows</a>
+
+                        <!-- Dropdown Menu -->
+                        <ul class="dropdown-menu">
+                            <!-- Menu Item -->
+                            <li>
+                                <a asp-controller="Movie" asp-action="Index">Advanced Search</a>
+                            </li>
+
+                            <!-- Menu Item -->
+                            <li>
+                                <a asp-controller="Category" asp-action="Index">Browse Categories</a>
+                            </li>
+
+                            <!-- Menu Item -->
+                            <li>
+                                <a asp-controller="Actor" asp-action="Index">Find an Actor</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                    {
+                        <!-- Menu Item -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle white-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Resources</a>
+
+                            <!-- Dropdown Menu -->
+                            <ul class="dropdown-menu">
+                                <!-- Menu Item -->
+                                <li>
+                                    <a asp-controller="Movie" asp-action="AddMovie" class="dropdown-item">Add Movie</a>
+                                </li>
+
+                                <!-- Menu Item -->
+                                <li>
+                                    <a asp-controller="Actor" asp-action="AddActor" class="dropdown-item">Add Actor</a>
+                                </li>
+
+                                <!-- Menu Item -->
+                                <li>
+                                    <a asp-controller="Category" asp-action="AddCategory" class="dropdown-item">Add Category</a>
+                                </li>
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li>
+                                        <a asp-area="Admin" asp-controller="Users" asp-action="DeleteUsersTable" class="dropdown-item">Delete Users</a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    <!-- Menu Item -->
+                    <li class="nav-item">
+                        <a class="nav-link white-link" asp-controller="Home" asp-action="AboutContacts">About & Contacts</a>
+                    </li>                   
+                </ul>
+                <!-- ====== End of Main Menu ====== -->
+                <!-- ====== Start of Extra Nav ====== -->
+                <ul class="navbar-nav extra-nav">
+
+                    <!-- Menu Item -->
+                    <li class="nav-item">
+                        <a class="nav-link toggle-search white-link" href="#">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </li>
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle white-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@User.Identity.Name</a>
+                            <!-- Dropdown Menu -->
+                            <ul class="dropdown-menu">
+                                <!-- Menu Item -->
+                                <li class="dropdown-item">
+                                    <a class="nav-link btn btn-main btn-effect login-btn" asp-controller="Manage" asp-action="Index">My Profile Page</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <form class="form-inline" asp-controller="Account" asp-action="Logout" id="logoutForm" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                        <button type="submit" class="nav-link btn btn-main btn-effect login-btn">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <!-- Menu Item -->
+                        <li class="nav-item m-auto">
+                            <a href="#login-register-popup" class="btn btn-main btn-effect login-btn popup-with-zoom-anim">
+                                <i class="icon-user"></i>login
+                            </a>
+                        </li>
+                    }
+                </ul>
+                <!-- ====== End of Extra Nav ====== -->
+
+            </div>
+            <!-- ====== End of #main-nav ====== -->
+        </nav>
+        <!-- ====== End of Navbar ====== -->
+    </div>
+</header>

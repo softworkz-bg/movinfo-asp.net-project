@@ -1,0 +1,87 @@
+﻿@model SingleMovieViewModel
+@{
+    ViewData["Title"] = "AddMovie";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/customStyle.css" />
+
+<div class="custom-table01 col-md-4">
+    @await Html.PartialAsync("_StatusMessage", TempData["StatusMessage"])
+    <form method="post" enctype="multipart/form-data" asp-action="SaveSingleMovie" asp-controller="Movie" class="custom-table01">
+        <div class="form-group">
+            <input asp-for="Name" class="form-control" value="" placeholder="Movie Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="DateCreated" class="form-control inline-div-control" value="" placeholder="Date Created" />
+            <span asp-validation-for="DateCreated" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="Trailer" class="form-control" value="" placeholder="Trailer URL" />
+            <span asp-validation-for="Trailer" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="Bio" class="form-control" value="" placeholder="Biography" />
+            <span asp-validation-for="Bio" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MainImage" class="btn btn-lg btn-add btn-main">Upload Image</label><span class="file-selected-tick">✔</span>
+            <input asp-for="MainImage" accept="image/*" class="form-control custom-upload-form-real btn-main btn-add" value="" placeholder="MainImage" />
+            <span asp-validation-for="MainImage" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" asp-for="AllCategoriesIdsString" class="form-control categories-form-submit" value="" placeholder="All Categories Ids" />
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" asp-for="AllActorsIdsString" class="form-control actors-form-submit" value="" placeholder="All Actors Ids" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Add Movie" class="btn btn-main btn-effect btn-add custom-btn" onmousedown="addAllActors(event);addAllCategories(event);" />
+        </div>
+    </form>
+</div>
+
+<div class="custom-table01 col-md-4">
+    <div class="table-header">
+        <div class="form-horizontal">
+            <div id="ActorSearchInput">
+                <div>
+                    <span asp-validation-for="AllActorsIdsString" class="text-danger"></span>
+                    @Html.TextBox("firstName", "", new { @class = "form-control", placeholder = "Search Actors by First Name" })
+                    <span id="resultsActorsTable"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-header">
+        <div class="hide"><h6>Chosen Actors (Last Names):</h6></div>
+        <div class="hideIfEmpty" id="placedActorResults"></div>
+    </div>
+</div>
+<div class="custom-table01 col-md-4">
+    <div id="CategorySearchInput">
+        <span asp-validation-for="AllCategoriesIdsString" class="text-danger"></span>
+        @Html.TextBox("categoryName", "", new { @class = "form-control", placeholder = "Search Categories by Name" })
+        <span id="categoriesResultsTable"></span>
+        <div>
+            <h6 class="hide">Chosen Categories:</h6>
+        </div>
+        <div class="hideIfEmpty" id="placedCategoryResults"></div>
+        <a href="#" target="_self" class="btn btn-main btn-effect"></i></a>
+
+    </div>
+</div>
+
+
+
+<!-- ===== Custom Search and Add Movie and Categories Page-Specific scripts ===== -->
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/removeArrayElement.js"></script>
+    <script type="text/javascript" src="~/assets/js/searchAndAddActors.js"></script>
+    <script type="text/javascript" src="~/assets/js/searchAndAddCategories.js"></script>
+    <script type="text/javascript" src="~/assets/js/revealTickWhenFileSelected.js"></script>
+}

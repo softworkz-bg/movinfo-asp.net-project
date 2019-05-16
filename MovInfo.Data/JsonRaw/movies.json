@@ -1,0 +1,178 @@
+﻿[
+  {
+    "ID": 1,
+    "Name": "The Shawshank Redemption",
+    "DateCreated": "10.10.1994",
+    "Rating": 4,
+    "AllRatingsSum": 16,
+    "TotalRatings": 4,
+    "Trailer": "https://www.youtube.com/watch?v=6hB3S9bIaco",
+    "Bio": "Two imprisoned men bond over a number of years, finding solace and eventual redemption.",
+    "MainImageName": "2e2fb419-d409-425c-82e4-a08612d71157.jpg"
+  },
+  {
+    "ID": 2,
+    "Name": "The Godfather",
+    "DateCreated": "10.03.1972",
+    "Rating": 5,
+    "AllRatingsSum": 25,
+    "TotalRatings": 5,
+    "Trailer": "https://www.youtube.com/watch?v=sY1S34973zA",
+    "Bio": "The aging patriarch of an organized crime dynasty.",
+    "MainImageName": "1364e02e-5fee-40f1-bb2e-158bc4807895.jpg"
+  },
+  {
+    "ID": 3,
+    "Name": "The Godfather II",
+    "DateCreated": "10.03.1974",
+    "Rating": 5,
+    "AllRatingsSum": 25,
+    "TotalRatings": 5,
+    "Trailer": "https://www.youtube.com/watch?v=9O1Iy9od7-A",
+    "Bio": "The early life of Vito Corleone in 1920s NYC is portrayed, while his son, Michael, expands.",
+    "MainImageName": "0b494002-9d50-4d6a-bd5e-b3e4239ae604.jpg"
+  },
+  {
+    "ID": 4,
+    "Name": "The Dark Knight",
+    "DateCreated": "10.05.2008",
+    "Rating": 4.5,
+    "AllRatingsSum": 27,
+    "TotalRatings": 6,
+    "Trailer": "https://www.youtube.com/watch?v=EXeTwQWrcwY",
+    "Bio": "The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "MainImageName": "79285801-34c5-48e9-b6f6-c32938b3ad2b.jpg"
+  },
+  {
+    "ID": 5,
+    "Name": "12 Angry Men",
+    "DateCreated": "10.04.1957",
+    "Rating": 4.5,
+    "AllRatingsSum": 27,
+    "TotalRatings": 6,
+    "Trailer": "https://www.youtube.com/watch?v=_13J_9B5jEk",
+    "Bio": "A jury holdout attempts to prevent a miscarriage of justice.",
+    "MainImageName": "3a1863cb-bd42-4f46-9e65-9eac91694314.jpg"
+  },
+  {
+    "ID": 6,
+    "Name": "Schindler List",
+    "DateCreated": "02.04.1994",
+    "Rating": 4.5,
+    "AllRatingsSum": 27,
+    "TotalRatings": 6,
+    "Trailer": "https://www.youtube.com/watch?v=gG22XNhtnoY",
+    "Bio": "In German-occupied Poland during World War II.",
+    "MainImageName": "008e2f72-cd92-4969-bf78-83b2f6644131.jpg"
+  },
+  {
+    "ID": 7,
+    "Name": "The Lord of the Rings 1",
+    "DateCreated": "10.04.2003",
+    "Rating": 4.5,
+    "AllRatingsSum": 27,
+    "TotalRatings": 6,
+    "Trailer": "https://www.youtube.com/watch?v=r5X-hFf6Bwo",
+    "Bio": "Gandalf and Aragorn lead the World of Men against Saurons army.",
+    "MainImageName": "cee9b0c5-ecb1-44ce-9f13-700f3740efaa.jpg"
+  },
+  {
+    "ID": 8,
+    "Name": "Pulp Fiction",
+    "DateCreated": "10.04.1994",
+    "Rating": 4.9,
+    "AllRatingsSum": 14.7,
+    "TotalRatings": 3,
+    "Trailer": "https://www.youtube.com/watch?v=s7EdQ4FqbhY",
+    "Bio": "The lives of two mob hitmen, a boxer, a gangster & his wife.",
+    "MainImageName": "82361fa3-aca2-4e8c-939b-2e824518898e.jpg"
+  },
+  {
+    "ID": 9,
+    "Name": "Buono, brutto, cattivo",
+    "DateCreated": "10.04.1966",
+    "Rating": 4.9,
+    "AllRatingsSum": 14.7,
+    "TotalRatings": 3,
+    "Trailer": "https://www.youtube.com/watch?v=WCN5JJY_wiA",
+    "Bio": "A bounty hunting scam joins two men in an uneasy alliance against a third in a race.",
+    "MainImageName": "0073fe39-4657-4558-be15-0eb43929a17a.jpg"
+  },
+  {
+    "ID": 10,
+    "Name": "Fight Club",
+    "DateCreated": "10.04.1999",
+    "Rating": 4.9,
+    "AllRatingsSum": 14.7,
+    "TotalRatings": 3,
+    "Trailer": "https://www.youtube.com/watch?v=Y6cwmHL2tFI",
+    "Bio": "An insomniac office worker and a devil-may-care soapmaker form an underground fight club.",
+    "MainImageName": "c7d10c31-c617-4424-84fb-82f99b667db1.jpg"
+  },
+  {
+    "ID": 11,
+    "Name": "The Lord of the Rings 2",
+    "DateCreated": "10.04.2001",
+    "Rating": 4.9,
+    "AllRatingsSum": 14.7,
+    "TotalRatings": 3,
+    "Trailer": "https://www.youtube.com/watch?v=V75dMMIW2B4",
+    "Bio": "A meek Hobbit from the Shire and eight companions set out on a journey.",
+    "MainImageName": "effe7330-1154-40b5-9c63-7d1baeaaacc6.jpg"
+  },
+  {
+    "ID": 12,
+    "Name": "Avengers: Endgame",
+    "DateCreated": "10.04.2019",
+    "Rating": 4.9,
+    "AllRatingsSum": 14.7,
+    "TotalRatings": 3,
+    "Trailer": "https://www.youtube.com/watch?v=TcMBFSGVi1c",
+    "Bio": "After the devastating events of Avengers:InfinityWar, the universe is in ruins.",
+    "MainImageName": "49a74aa1-759c-42ad-86a1-961d0bfcfdc7.jpg"
+  },
+  {
+    "ID": 13,
+    "Name": "Forrest Gump",
+    "DateCreated": "10.04.1994",
+    "Rating": 4.2,
+    "AllRatingsSum": 29.4,
+    "TotalRatings": 7,
+    "Trailer": "https://www.youtube.com/watch?v=uPIEn0M8su0",
+    "Bio": "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history.",
+    "MainImageName": "832b388b-04eb-4c98-a5b4-00638e8cfea9.jpg"
+  },
+  {
+    "ID": 14,
+    "Name": "Star Wars: Episode V",
+    "DateCreated": "10.04.1984",
+    "Rating": 4.2,
+    "AllRatingsSum": 29.4,
+    "TotalRatings": 7,
+    "Trailer": "https://www.youtube.com/watch?v=JNwNXF9Y6kY",
+    "Bio": "After the Rebels are brutally overpowered by the Empire on the ice planet Hoth.",
+    "MainImageName": "0b45a8da-7f84-46dd-bbdd-094fde5abf44.jpg"
+  },
+  {
+    "ID": 15,
+    "Name": "Inception",
+    "DateCreated": "10.04.2010",
+    "Rating": 4.2,
+    "AllRatingsSum": 29.4,
+    "TotalRatings": 7,
+    "Trailer": "https://www.youtube.com/watch?v=YoHD9XEInc0",
+    "Bio": "A thief who steals corporate secrets through the use of dream-sharing technology.",
+    "MainImageName": "98425df2-e913-4967-b72e-1efc895fe904.jpg"
+  },
+  {
+    "ID": 16,
+    "Name": "The Lord of the Rings 3",
+    "DateCreated": "10.04.2002",
+    "Rating": 4.2,
+    "AllRatingsSum": 29.4,
+    "TotalRatings": 7,
+    "Trailer": "https://www.youtube.com/watch?v=LbfMDwc4azU",
+    "Bio": "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum.",
+    "MainImageName": "a4f656ed-fe5e-4ca0-abb0-fbb5e61d7af8.jpg"
+  }
+]

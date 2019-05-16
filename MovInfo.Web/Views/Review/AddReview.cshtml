@@ -1,0 +1,80 @@
+﻿@model SingleReviewViewModel
+@{
+    ViewData["Title"] = "AddReview";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="/assets/css/starRating.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<aside class="widget widget-movie-details">
+    <h3 class="title">Please, check you Review text again, sir!</h3>
+    <div class="container">
+        <div class="row" style="margin-top:40px;">
+            <div class="col-md-8">
+                <div>                    
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="row" id="post-review-box">
+                            <div class="col-md-12">
+                                <form method="post" asp-action="SaveReviewAsync" asp-controller="Review">
+
+                                    <input asp-for="@Model.Rating" id="ratings-hidden" name="rating" type="hidden" required>
+
+                                    <input asp-for="@Model.ApplicationUserId" name="ApplicationUserId" type="hidden" value="@Model.ApplicationUserId">
+                                    <input asp-for="@Model.ApplicationUserName" name="ApplicationUserName" type="hidden" value="@Model.ApplicationUserName">
+                                    <input asp-for="@Model.MovieId" name="MovieId" type="hidden" value="@Model.MovieId">
+
+                                    <textarea asp-for="@Model.Text" class="form-control animated" cols="50" id="new-review" name="Text" placeholder="Enter your review here..." rows="5"></textarea>
+                                    <span asp-validation-for="@Model.Text" class="text-danger"></span>
+                                    <span asp-validation-for="@Model.Rating" class="text-danger"></span>
+
+                                    <div>
+                                        <div class="stars starrr" data-rating="0"></div>
+                                        <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+                                            <span class="glyphicon glyphicon-remove"></span>Cancel
+                                        </a>
+                                        <button class="btn btn-main btn-effect btn-lg" type="submit">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row" id="post-review-box" style="display:none;">
+                            <div class="col-md-12">
+                                <h3>Please LOG IN First!</h3>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</aside>
+
+<partial name="_CookieConsentPartial" />
+<footer class="border-top footer text-muted">
+
+    <div class="container">
+        &copy; 2019 - MovInfo.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &emsp;
+        <a href="https://icons8.com/icon/23264/user">User icon by Icons8</a>
+    </div>
+
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.2/jquery.validate.unobtrusive.js"></script>
+
+
+<script type="text/javascript" src="~/assets/js/reviewBox.js"></script>

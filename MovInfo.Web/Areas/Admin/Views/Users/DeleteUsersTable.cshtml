@@ -1,0 +1,57 @@
+﻿@model AllAppUsersViewModel
+@{
+    ViewData["Title"] = "DeleteUsersTable";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/moviesTableCustomStyling.css" />
+
+<!-- =============== START OF MAIN =============== -->
+<main class="ptb100">
+    <div class="container">
+        <!-- Start of Movie List -->
+        <div>
+            <div role="tabpanel" data-example-id="togglable-tabs">
+                <div id="myTabContent">
+                    <div role="tabpanel" id="home" aria-labelledby="home-tab">
+                        <div class="agile-news-table">
+                            <div class="w3ls-news-result">
+                                <h4>Users in app: <span>@Model.AllUsers.Count()</span></h4>
+                            </div>                          
+
+                            <div class="main main-raised">
+                                <div class="section">
+                                    <div class="container">
+                                        <hr />
+                                        <div class="table-responsive">
+                                            @await Html.PartialAsync("_UsersTable", Model)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Movie List -->
+
+    </div>
+</main>
+<!-- =============== END OF MAIN =============== -->
+
+@section Scripts
+    {
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                responsive: true,
+                stateSave: true
+            });
+        });
+    </script>
+}
+
+
